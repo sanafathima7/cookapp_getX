@@ -98,6 +98,31 @@ class MyBottomnav extends StatelessWidget {
                     ),
                   ),
                 ),
+                InkWell(
+                  onTap: () {
+                    controller.index.value = 3;
+                  },
+                  child: Obx(
+                    () => AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.bounceInOut,
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(80),
+                        color: controller.index.value == 3
+                            ? const Color.fromARGB(255, 219, 197, 118)
+                            : null,
+                      ),
+                      child: Icon(
+                        size: 30,
+                        Icons.shopping_bag,
+                        color: Colors.white70,
+                        // color: Theme.of(context).colorScheme.primaryContainer,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

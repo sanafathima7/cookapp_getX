@@ -1,5 +1,5 @@
 import 'package:cookapp/components/bottomnav.dart';
-import 'package:cookapp/pages/description/descriptionpage.dart';
+import 'package:cookapp/pages/bookmarkpage/description/descriptionpage.dart';
 import 'package:cookapp/pages/homepage/widgets/listtile.dart';
 import 'package:cookapp/pages/homepage/widgets/search.dart';
 import 'package:cookapp/pages/homepage/widgets/trendingcard.dart';
@@ -52,12 +52,12 @@ class HomePage extends StatelessWidget {
               color: Colors.white24,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPage(),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     // builder: (context) => SearchPage(),
+              //   ),
+              // );
             },
             tooltip: 'Search here',
           ),

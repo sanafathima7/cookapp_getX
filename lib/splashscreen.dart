@@ -1,3 +1,4 @@
+import 'package:cookapp/pages/homepage/homepage.dart'; // Make sure Homepage is imported, not Homepagecontroller
 import 'package:cookapp/pages/homepage/homepagecontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,9 +31,12 @@ class _SplashScreenState extends State<SplashScreen>
     // Start the animation
     _controller.forward();
 
-    // Navigate to the Homepagecontroller after the animation completes
+    // Navigate to the Homepage after the animation completes
     Future.delayed(const Duration(seconds: 3), () {
-      Get.off(() => const Homepagecontroller());
+      if (mounted) {
+        // Ensure that SplashScreen is still mounted before navigating
+        Get.off(() => const Homepagecontroller());
+      }
     });
   }
 
@@ -67,6 +71,17 @@ class _SplashScreenState extends State<SplashScreen>
                     'https://png.pngtree.com/background/20230528/original/pngtree-chef-arranging-food-on-a-plate-picture-image_2782564.jpg', // Replace with your recipe image URL
                     width: 150,
                     height: 150,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  (loadingProgress.expectedTotalBytes ?? 1)
+                              : null,
+                        ),
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(height: 20),
