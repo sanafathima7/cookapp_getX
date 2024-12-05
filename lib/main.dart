@@ -1,13 +1,7 @@
-import 'package:cookapp/controllers/bottomnavcontroller.dart';
-import 'package:cookapp/controllers/app_controller.dart';
-import 'package:cookapp/model/item.dart';
-import 'package:cookapp/model/recipe.dart';
-import 'package:cookapp/pages/homepage/homepage.dart';
 import 'package:cookapp/pages/homepage/language/localisation_lang.dart';
 import 'package:cookapp/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -17,8 +11,8 @@ void main() async {
   await Hive.openBox('Database');
   await Hive.openBox('itemdb');
 
-  Hive.registerAdapter(RecipeAdapter());
-  Hive.registerAdapter(ItemAdapter());
+  // Hive.registerAdapter(RecipeAdapter());
+  // Hive.registerAdapter(ItemAdapter());
 
   runApp(MyApp());
 }
@@ -109,7 +103,7 @@ class MyApp extends StatelessWidget {
       title: 'Cook App',
 
       fallbackLocale: Locale('en', 'US'), // Fallback locale
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
